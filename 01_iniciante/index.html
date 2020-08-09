@@ -9,8 +9,6 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <!-- Adicione nosso componente React. -->
-    <script src="like_button.js"></script>
 </head>
 
 <body>
@@ -19,8 +17,35 @@
     </div>
 
     <script type="text/babel">
-        function App() {
-            return <div>APP WORKS!!!</div>
+
+        const Button = (props) => {
+            const handleClick = () => {
+                props.setCount();
+            }
+
+            return (
+                <button onClick={handleClick}>ADD +1</button>
+            )
+        }
+
+        const Title = () => {
+            const name = 'Jack Bauer'
+            return (<h1>{name}</h1>)
+        }
+
+        const App = () => {
+            const [count, setCount] = React.useState(0);
+
+            const add = () => {
+                setCount(count + 1);
+            }
+            return (
+                <div>
+                    <h1>Count: {count} </h1>
+                    <Title />
+                    <Button setCount={add} />
+                </div>
+            )
         }
 
         ReactDOM.render(<App />, document.getElementById('app'))
