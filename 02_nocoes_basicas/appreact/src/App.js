@@ -1,4 +1,5 @@
 import React from 'react';
+import Title from './Title';
 
 const luana = {
   cliente: 'Luana',
@@ -32,7 +33,7 @@ const App = () => {
 
   return (
     <div style={{ backgroundColor: '#ccc' }}>
-      <div style={{ backgroundColor: '#222', color: '#ccc', fontSize: 26, fontWeight: 'bold', padding: 10 }}>FINANÇAS</div>
+      <Title label="Finanças" />
       <div style={{ backgroundColor: '#ccc', color: '#222', padding: 10 }}>
         <p>
           <span style={{ fontWeight: 'bold' }}>Nome: </span>
@@ -53,16 +54,12 @@ const App = () => {
         {total > 10000 && <p style={{ color: '#ff4444', fontWeight: 'bold', fontSize: 12 }}>Você está gastando muito!</p>}
       </div>
 
-      <h2 style={{ backgroundColor: '#222', color: '#ccc', fontSize: 26, fontWeight: 'bold', padding: 10 }}>
-        Compras
-        </h2>
+      <Title label="Compras" />
       <ul style={{ margin: 10, paddingBottom: 20 }}>
         {dados.compras.map((item, index) => (<li key={index}>{item.nome}</li>))}
       </ul>
 
-      <h2 style={{ backgroundColor: '#222', color: '#ccc', fontSize: 26, fontWeight: 'bold', padding: 10 }}>
-        Compras caras (a partir de R$ 3.000)
-        </h2>
+      <Title label="Compras caras (a partir de R$ 3.000)" />
       <ul style={{ margin: 10, paddingBottom: 20 }}>
         {dados.compras.filter((c) => Number(c.preco.replace('R$ ', '')) >= 3000).map((item, index) => (<li key={index}>{item.nome}</li>))}
       </ul>
